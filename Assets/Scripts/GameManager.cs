@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public Button ResidualButton;
 
     public List<WasteItem> WasteItems = new List<WasteItem>();
+    public UIManager UIManager;
 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -37,6 +38,10 @@ public class GameManager : MonoBehaviour
         WasteItem randomItem = WasteItems[index];
 
         Debug.Log(randomItem);
+        string ChosenItem =randomItem.itemName;
+        
+        //randomItem.itemName = ChosenItem;
+        UIManager.UpdateItemText(ChosenItem);
 
 
     }
