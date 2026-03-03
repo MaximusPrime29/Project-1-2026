@@ -25,14 +25,6 @@ public class GameManager : MonoBehaviour
         SelectWasteItem();
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
     public static void buttonmethod()
     {
 
@@ -48,8 +40,12 @@ public class GameManager : MonoBehaviour
 
 
     }
+    void Update()
+    {
 
-    
+    }
+
+
 
 
 
