@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        UpdateScoreText(0);
+        UpdateLivesText(3);
         
     }
 
@@ -27,12 +29,13 @@ public class UIManager : MonoBehaviour
 
 
     }
-    public void UpdateScoreText(string text)
+    public void UpdateScoreText(int number)
     {
-        ScoreText.text = text;
+        ScoreText.text = "Score: " +number;
     }
-    public void UpdateLivesText()
+    public void UpdateLivesText(int live)
     {
+        LivesText.text = "Lives: " + live;
 
     }
 }
