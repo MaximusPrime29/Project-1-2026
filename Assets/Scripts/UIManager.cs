@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI ItemText;
     public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI LivesText;
+    public int StartLife = 3;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -35,6 +36,7 @@ public class UIManager : MonoBehaviour
     }
     public void UpdateLivesText(int live)
     {
+
         LivesText.text = "Lives: " + live;
 
     }
