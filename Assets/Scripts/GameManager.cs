@@ -84,15 +84,25 @@ public class GameManager : MonoBehaviour
     {
         ChosenItem = null;
         int index = Random.Range(0, WasteItems.Count);
-
-        ChosenItem = WasteItems[index];
-        if(ChosenItem == null)
+        if(WasteItems.Count==0)
         {
-            Debug.Log("You won");
+            Won();
         }
+        else
+        {
+            ChosenItem = WasteItems[index];
+            UIManager.UpdateItemText(ChosenItem.itemName);
+
+        }
+
+
+
+            //Debug.Log(WasteItems.Count);
+            ChosenItem = WasteItems[index];
+       
         //WasteItems.Remove(ChosenItem);
 
-        Debug.Log(ChosenItem);
+        //Debug.Log(ChosenItem);
         //ChosenItem =randomItem.itemName;
 
         //Public List<WasteItems>
@@ -101,13 +111,17 @@ public class GameManager : MonoBehaviour
         
         
         //randomItem.itemName = ChosenItem;
-        UIManager.UpdateItemText(ChosenItem.itemName);
+        //UIManager.UpdateItemText(ChosenItem.itemName);
 
 
     }
     void Update()
     {
 
+    }
+    public void Won()
+    {
+        Debug.Log("You have won");
     }
 
 
