@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 //using System;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -37,6 +38,8 @@ public class GameManager : MonoBehaviour
         PaperButton.onClick.AddListener(Bin2);
         PMDButton.onClick.AddListener(Bin3);
         ResidualButton.onClick.AddListener(Bin4);
+        UIManager.UpdateScoreText(0);
+        UIManager.UpdateLivesText(3);
 
         
     }
@@ -64,12 +67,16 @@ public class GameManager : MonoBehaviour
             CurrentScore += 100;
             UIManager.UpdateScoreText(CurrentScore);
             WasteItems.Remove(ChosenItem);
+
             SelectWasteItem();
+            CheckList();
         }
         else
         {
-            UIManager.UpdateLivesText(1);
+            CurrentLives--;
+            UIManager.UpdateLivesText(CurrentLives);
             WasteItems.Remove(ChosenItem);
+            CheckLives();
             SelectWasteItem();
         }
 
@@ -84,21 +91,18 @@ public class GameManager : MonoBehaviour
     {
         ChosenItem = null;
         int index = Random.Range(0, WasteItems.Count);
-        if(WasteItems.Count==0)
-        {
-            Won();
-        }
-        else
-        {
-            ChosenItem = WasteItems[index];
-            UIManager.UpdateItemText(ChosenItem.itemName);
+        
+        
+        
+        ChosenItem = WasteItems[index];
+        UIManager.UpdateItemText(ChosenItem.itemName);
 
-        }
+        
 
 
 
             //Debug.Log(WasteItems.Count);
-            ChosenItem = WasteItems[index];
+         ChosenItem = WasteItems[index];
        
         //WasteItems.Remove(ChosenItem);
 
@@ -123,6 +127,33 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("You have won");
     }
+    public void CheckList()
+    {
+        if(WasteItems.Count==0)
+        {
+            SceneManager.LoadScene("Won");
+
+        
+        }
+
+
+    }
+    public void CheckLives()
+    {
+        if(CurrentLives==0)
+        {
+
+            //load gameover scene
+            SceneManager.LoadScene("Lose");
+
+        }
+        
+    }
+        
+
+
+
+
 
 
 
