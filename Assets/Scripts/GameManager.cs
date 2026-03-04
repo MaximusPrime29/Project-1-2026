@@ -17,10 +17,14 @@ public class GameManager : MonoBehaviour
     public Button ResidualButton;
 
     public List<WasteItem> WasteItems = new List<WasteItem>();
+    public List<WasteItem> WasteItemsAdj = new List<WasteItem>();
     public UIManager UIManager;
 
     //public string ChosenItem;
     private WasteItem ChosenItem;
+
+    public int CurrentScore = 0;
+    public int CurrentLives = 3;
     
 
     
@@ -38,31 +42,35 @@ public class GameManager : MonoBehaviour
     }
     void Bin1()
     {
-
-
+        check(WasteType.GTF);
     }
     void Bin2()
     {
-
+        check(WasteType.Paper);
     }
     void Bin3()
     {
-
+        check(WasteType.PMD);
     }
     void Bin4()
     {
-
+        check(WasteType.Residual);
     }
 
     public void check(WasteType selectedBin)
     {
         if(selectedBin==ChosenItem.type)
-        { 
-            UIManager.UpdateScoreText(100);
+        {
+            CurrentScore += 100;
+            UIManager.UpdateScoreText(CurrentScore);
+            WasteItems.Remove(ChosenItem);
+            SelectWasteItem();
         }
         else
         {
             UIManager.UpdateLivesText(1);
+            WasteItems.Remove(ChosenItem);
+            SelectWasteItem();
         }
 
     }
@@ -78,9 +86,18 @@ public class GameManager : MonoBehaviour
         int index = Random.Range(0, WasteItems.Count);
 
         ChosenItem = WasteItems[index];
+        if(ChosenItem == null)
+        {
+            Debug.Log("You won");
+        }
+        //WasteItems.Remove(ChosenItem);
 
         Debug.Log(ChosenItem);
         //ChosenItem =randomItem.itemName;
+
+        //Public List<WasteItems>
+
+
         
         
         //randomItem.itemName = ChosenItem;
