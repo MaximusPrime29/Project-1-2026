@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public Button ResidualButton;
 
     public List<WasteItem> WasteItems = new List<WasteItem>();
-    public List<WasteItem> WasteItemsAdj = new List<WasteItem>();
+   // public List<WasteItem> WasteItemsAdj = new List<WasteItem>();
     public UIManager UIManager;
 
     //public string ChosenItem;
@@ -42,6 +42,21 @@ public class GameManager : MonoBehaviour
         UIManager.UpdateLivesText(3);
 
         
+    }
+
+    public void SelectWasteItem()
+    {
+
+        ChosenItem = null;
+        int index = Random.Range(0, WasteItems.Count);
+
+        ChosenItem = WasteItems[index];
+        UIManager.UpdateItemText(ChosenItem.itemName);
+
+        //Debug.Log(WasteItems.Count);
+        ChosenItem = WasteItems[index];
+
+
     }
     void Bin1()
     {
@@ -82,43 +97,9 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public static void buttonmethod()
-    {
+    
 
-    }
-
-    public void SelectWasteItem()
-    {
-        ChosenItem = null;
-        int index = Random.Range(0, WasteItems.Count);
-        
-        
-        
-        ChosenItem = WasteItems[index];
-        UIManager.UpdateItemText(ChosenItem.itemName);
-
-        
-
-
-
-            //Debug.Log(WasteItems.Count);
-         ChosenItem = WasteItems[index];
-       
-        //WasteItems.Remove(ChosenItem);
-
-        //Debug.Log(ChosenItem);
-        //ChosenItem =randomItem.itemName;
-
-        //Public List<WasteItems>
-
-
-        
-        
-        //randomItem.itemName = ChosenItem;
-        //UIManager.UpdateItemText(ChosenItem.itemName);
-
-
-    }
+   
     void Update()
     {
 
