@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Book
   m_EditorClassIdentifier: Assembly-CSharp::WasteItem
   itemName: Book
-  type: 2
+  type: 1

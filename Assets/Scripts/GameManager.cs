@@ -83,7 +83,15 @@ public class GameManager : MonoBehaviour
             UIManager.UpdateScoreText(CurrentScore);
             WasteItems.Remove(ChosenItem);
 
-            SelectWasteItem();
+
+            CheckList();
+            if (WasteItems.Count > 0)
+            {
+
+                SelectWasteItem();
+
+            }
+            //SelectWasteItem();
             CheckList();
         }
         else
@@ -112,7 +120,7 @@ public class GameManager : MonoBehaviour
     {
         if(WasteItems.Count==0)
         {
-            SceneManager.LoadScene("Won");
+            SceneManager.LoadScene("WinScene");
 
         
         }
@@ -125,7 +133,7 @@ public class GameManager : MonoBehaviour
         {
 
             //load gameover scene
-            SceneManager.LoadScene("Lose");
+            SceneManager.LoadScene("LoseScene");
 
         }
         
